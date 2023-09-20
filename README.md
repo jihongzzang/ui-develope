@@ -15,7 +15,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Used Stack
 
 ```
-- Next.js, StoryBook, Typescript, TailwindCSS
+- NextJS(13.4.19), StoryBook(7.4), Typescript(5.2.2), TailwindCSS(3.3.3)
+```
+
+## Used Blocker In Making Template
+
+```
+- NPM, YARN, StoryBook version compaitbility
+- Prettier and tailwindcss plugin version compatibility
+- StoryBook and NextJS version compatibility
+- TypeScript and StoryBook version compatibility
 ```
 
 ## Learn More
