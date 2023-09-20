@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 
       <main>
         <div>
-          <p className="text-gray-300">지홍</p>
+          <p className="text-gray-1000">하이</p>
         </div>
       </main>
     </div>
