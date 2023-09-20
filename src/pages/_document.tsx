@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 
 import AppConfig from '@/config';
-import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
+import Document, { DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document<DocumentInitialProps> {
   render() {
