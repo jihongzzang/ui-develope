@@ -1,9 +1,14 @@
-/* eslint-disable react/no-danger */
-
 import AppConfig from '@/config';
-import Document, { DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
+import * as React from 'react';
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
+// import { extractCritical } from '@emotion/server';
 
-export default class MyDocument extends Document<DocumentInitialProps> {
+type MyDocumentProps = DocumentInitialProps & {
+  ids: string[];
+  css: string;
+};
+
+export default class MyDocument extends Document<MyDocumentProps> {
   render() {
     return (
       <Html lang={AppConfig.locale}>
