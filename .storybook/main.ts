@@ -12,9 +12,16 @@ const config: StorybookConfig = {
     name: '@storybook/nextjs',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
+  core: {
+    builder: '@storybook/builder-webpack5',
   },
+
+  babel: async (options) => {
+    options?.plugins?.unshift('babel-plugin-twin');
+    options?.presets?.push('@emotion/babel-preset-css-prop');
+    return options;
+  },
+
   webpackFinal: async (config) => {
     const imageRule = config.module?.rules?.find((rule) => {
       const test = (rule as { test: RegExp }).test;

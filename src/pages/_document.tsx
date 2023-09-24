@@ -1,7 +1,7 @@
 import AppConfig from '@/config';
 import * as React from 'react';
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
-// import { extractCritical } from '@emotion/server';
+import { renderStatic } from '@/shared/renderer';
 
 type MyDocumentProps = DocumentInitialProps & {
   ids: string[];
@@ -9,6 +9,23 @@ type MyDocumentProps = DocumentInitialProps & {
 };
 
 export default class MyDocument extends Document<MyDocumentProps> {
+  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+    const page = await ctx.renderPage();
+    const { css, ids } = await renderStatic(page.html);
+
+    const initialProps = await Document.getInitialProps(ctx);
+
+    return {
+      ...initialProps,
+      styles: (
+        <React.Fragment>
+          {initialProps.styles}
+          <style data-emotion={`css ${ids.join(' ')}`} dangerouslySetInnerHTML={{ __html: css }} />
+        </React.Fragment>
+      ),
+    };
+  }
+
   render() {
     return (
       <Html lang={AppConfig.locale}>
